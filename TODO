@@ -1,0 +1,35 @@
+- Post a issue for p7zip: core dump if referencing not existing archive item (index out of range).
+  For example: GetProperty(10000000, 3). Extract function is also affected.
+
+- Post a issue for 7zip/p7zip: extracting empty files from LZH archive (method 6, 7)
+
+- Test extracting encrypted archive where different password for different files are used.
+
+- Offer a source package without tests
+
+- Repack XAR (bz2) tests with new version of xar
+
+- In JavaDoc of ArchiveFormat: add columns (single file tests and multiple files tests)
+
+- Add privileged initialization of the native part. See forum "Help"
+
+- Add to integration tests
+  - Test, that the release and not the debug compilation of the binary was used to build each platform jar
+
+
+Minor TODOs:
+- Write more tests, for example, extracting archive with two files encrypted with different password.
+- Test some untested archive formats
+- Support more archive formats
+- Write documentation / improve javadoc
+- Improve Web site
+
+
+Major TODOs:
+- Implement archive creation
+- Move to version 9.X of 7-zip/p7zip
+
+Info:
+- Quasijarus compression
+  * http://ifctfvax.harhan.org/Quasijarus/compress.html
+  * ftp://ifctfvax.harhan.org/pub/UNIX/

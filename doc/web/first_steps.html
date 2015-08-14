@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta name="verify-v1" content="mCmiZMVFK9OR5rFvabIsFhsHCfxvP4vfF5pvGSCjHOg=" />
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+<title>Welcome to 7-Zip-JBinding project</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/sevenzipjbind/" : "http://sourceforge.net/apps/piwik/sevenzipjbind/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/apps/piwik/sevenzipjbind/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</head>
+<body>
+<center>
+<table><tr><td width="1000" align="left">
+<a href="http://sourceforge.net/donate/index.php?group_id=210915"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /></a>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=210915&amp;type=2" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+<!--&nbsp;<font size="+1">7-Zip-JBinding</font><br/> -->
+
+<table border="0" width="100%">
+<tr><td valign="bottom"><img src="logo-small.png" alt="Logo"></td><td align="center"><img src="logo-big.png" alt="Logo Big" /></td></tr>
+<tr><td height="50"></td></tr>
+<tr><td width="240" valign="top" class="menu">
+<table class="menu" border="0">
+<tr><td><a href="index.html">Home</a></td></tr>
+<tr><td><a href="https://sourceforge.net/projects/sevenzipjbind/">SF-Home</a></td></tr>
+<tr><td><a href="first_steps.html">Documentation</a><br/>
+<table class="submenu" border="0">
+	<tr><td><a href="first_steps.html" >First steps</a></td></tr>
+	<tr><td><a href="basic_snippets.html" class="submenu">Code snippets</a></td></tr>
+	<tr><td><a href="javadoc/index.html" class="submenu">JavaDoc</a></td></tr>
+</table></td></tr>
+<tr><td><a href="http://sourceforge.net/projects/sevenzipjbind/files/7-Zip-JBinding/4.65-1.06rc-extr-only/" class="menu">Download</a></td></tr>
+<tr><td><a href="http://my.cdash.org/index.php?project=7-Zip-JBinding" class="menu">Test Dashboard</a></td></tr>
+<tr><td><a href="https://sourceforge.net/projects/sevenzipjbind/forums" class="menu">Forum</a></td></tr>
+<tr><td><a href="http://sourceforge.net/tracker/?group_id=210915" class="menu">Tracker</a></td></tr>
+<tr><td><a href="http://sourceforge.net/donate/index.php?group_id=210915" class="menu">Donate Money to<br/>7-Zip-JBinding</a></td></tr>
+</table>
+<br/><br/>
+<iframe marginheight="0" marginwidth="0" frameborder="0" height="1000" scrolling="no" width="220" src="voting.php">Your browser does not support iframes</iframe>
+</td><td align="left">
+<h1>First steps</h1>
+<h2>Download and extraction</h2>
+<p>
+The most simple way to get 7-Zip-JBinding to work is to download a pre-compiled binary package
+for your operating system (<a href="http://sourceforge.net/projects/sevenzipjbind/files/">download link</a>).
+All provided packages are Zip-compressed and you will need an extraction utility to expand them. For windows users is
+securing a copy of <a href="http://sevenzip.sourceforge.net/">7-Zip</a> is highly recommended. Linux and Mac OS X
+users may use the corresponding command line tool <a href="http://p7zip.sourceforge.net/">p7Zip</a>.
+</p>
+<br/>
+<h2>Run an example</h2>
+<p>
+To use the 7-Zip-JBinding library you will need two JAR-files from <span class="filename">lib</span> folder of the
+distribution in your classpath:
+</p>
+<ul>
+	<li> <span class="filename">sevenzip-jbinding.jar</span> - java part of 7-Zip-JBinding. 
+		 (<a href="javadoc/index.html">JavaDoc</a>)</li>
+	<li> <span class="filename">sevenzip-jbinding-&lsaquo;OS&rsaquo;.jar</span> - native libraries for
+	the target operating system &lsaquo;OS&rsaquo;</li>
+</ul>  
+Here is a simple test program that can be used for checking all 7-Zip-JBinding requirements:
+<div class="fragment"><pre class="fragment">
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.<a href="javadoc/net/sf/sevenzipjbinding/SevenZip.html">SevenZip</a>;
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.<a href="javadoc/net/sf/sevenzipjbinding/SevenZipNativeInitializationException.html">SevenZipNativeInitializationException</a>;
+
+<span class="java-keyword">public</span> <span class="java-keyword">class</span> SevenZipJBindingInitCheck {
+    <span class="java-keyword">public</span> <span class="java-keyword">static</span> <span class="java-keyword">void</span> main(String[] args) {
+        <span class="java-keyword">try</span> {
+            <a href="javadoc/net/sf/sevenzipjbinding/SevenZip.html">SevenZip</a>.<span class="java-staticmethod">initSevenZipFromPlatformJAR</span>();
+            System.<span class="java-staticfield">out</span>.println(<span class="java-string">"7-Zip-JBinding library was initialized"</span>);
+        } <span class="java-keyword">catch</span> (<a href="javadoc/net/sf/sevenzipjbinding/SevenZipNativeInitializationException.html">SevenZipNativeInitializationException</a> e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre></div>
+<div class="snippet-info"><a href="snippets/SevenZipJBindingInitCheck.java">download java code</a></div>
+<p>
+To run this program correctly you will need to add two 7-Zip-JBinding JAR-files to the classpath.
+On Linux it could be done as following:
+</p>
+<div class="fragment"><pre class="fragment">
+$ java -cp &lsaquo;path-to-lib&rsaquo;/sevenzip-jbinding.jar:\ 
+  &lsaquo;path-to-lib&rsaquo;/sevenzipjbinding-Linux-i686.jar:. \ 
+  SevenZipJBindingInitCheck
+</pre></div>
+ 
+<p>
+Windows users can do the same with (written in a single line)
+</p>
+<div class="fragment"><pre class="fragment">
+C:\Test&gt; java -cp &lsaquo;path-to-lib&rsaquo;\sevenzip-jbinding.jar; 
+  &lsaquo;path-to-lib&rsaquo;\sevenzipjbinding-Windows-x86.jar;.
+  SevenZipJBindingInitCheck
+</pre></div>
+<p>
+If the message
+</p>
+<div class="fragment"><pre class="fragment">
+7-Zip-JBinding library was initialized
+</pre></div>
+<p>
+shows up than 7-Zip-JBinding is working properly and is ready for use.
+</p>
+<br/>
+<h2>Opening an archive</h2>
+<p>
+Before you can do any operation on an archive file, you have to open it. In order to do this
+you will need to call one of the corresponding static methods
+SevenZip.openInArchive(...). The only
+mandatory parameter is "inStream" - an instance of the
+IInStream interface.
+</p>
+<p>
+In many cases
+the task is to open an archive file from the file system. 7-Zip-JBinding has a standard implementation
+of <a href="javadoc/net/sf/sevenzipjbinding/IInStream.html">IInStream</a> for this purpose:
+RandomAccessFileInStream.
+As the name says, this takes an instance of RandomAccessFile and turns it into an instance of
+IInStream.
+</p>
+<p>
+Here is a simple example of how to open an archive from the file system: 
+</p>
+<div class="fragment"><pre class="fragment">
+<span class="java-keyword">public</span> <span class="java-keyword">void</span> openArchive(String archiveFilename) 
+        <span class="java-keyword">throws</span> <a href="javadoc/net/sf/sevenzipjbinding/SevenZipException.html">SevenZipException</a>, FileNotFoundException {
+
+    <span class="java-field">randomAccessFile</span> = <span class="java-keyword">new</span> RandomAccessFile(archiveFilename, <span class="java-string">"r"</span>);
+
+    <span class="java-field">inArchive</span> = <a href="javadoc/net/sf/sevenzipjbinding/SevenZip.html">SevenZip</a>.<span class="java-staticmethod">openInArchive</span>(<span class="java-keyword">null</span>, <span class="java-comment">// Choose format automatically</span>
+            <span class="java-keyword">new</span> <a href="javadoc/net/sf/sevenzipjbinding/impl/RandomAccessFileInStream.html">RandomAccessFileInStream</a>(randomAccessFile));
+}
+</pre></div>
+<div class="snippet-info"><a href="snippets/SimpleOpen.java">download java code</a></div>
+<p>
+The opened archive can now be used for exploring and extraction operations. The last method called on archive should always be  
+ISevenZipInArchive.close().
+This closes the archive and frees system resources. The last, but not least, step is to close the random access file 
+'<span class="java-field">randomAccessFile</span>' using close() method of the RandomAccessFile class.
+</p> 
+<p>
+Here is a complete program to print count of items in the archive:
+<div class="fragment"><pre class="fragment">
+<span class="java-keyword">import</span> java.io.IOException;
+<span class="java-keyword">import</span> java.io.RandomAccessFile;
+
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.<a href="javadoc/net/sf/sevenzipjbinding/ISevenZipInArchive.html">ISevenZipInArchive</a>;
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.<a href="javadoc/net/sf/sevenzipjbinding/SevenZip.html">SevenZip</a>;
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.<a href="javadoc/net/sf/sevenzipjbinding/SevenZipException.html">SevenZipException</a>;
+<span class="java-keyword">import</span> net.sf.sevenzipjbinding.impl.<a href="javadoc/net/sf/sevenzipjbinding/impl/RandomAccessFileInStream.html">RandomAccessFileInStream</a>;
+
+<span class="java-keyword">public</span> <span class="java-keyword">class</span> PrintCountOfItems {
+    <span class="java-keyword">public</span> <span class="java-keyword">static</span> <span class="java-keyword">void</span> main(String[] args) {
+        <span class="java-keyword">if</span> (args.<span class="java-field">length</span> == 0) {
+            System.<span class="java-staticfield">out</span>.println(<span class="java-string">"Usage: java PrintCountOfItems &#60;archive-name&#62;"</span>);
+            <span class="java-keyword">return</span>;
+        }
+        String archiveFilename = args[0];
+
+        RandomAccessFile randomAccessFile = <span class="java-keyword">null</span>;
+        <a href="javadoc/net/sf/sevenzipjbinding/ISevenZipInArchive.html">ISevenZipInArchive</a> inArchive = <span class="java-keyword">null</span>;
+        <span class="java-keyword">try</span> {
+            randomAccessFile = <span class="java-keyword">new</span> RandomAccessFile(archiveFilename, <span class="java-string">"r"</span>);
+            inArchive = <a href="javadoc/net/sf/sevenzipjbinding/SevenZip.html">SevenZip</a>.<span class="java-staticmethod">openInArchive</span>(<span class="java-keyword">null</span>, <span class="java-comment">// autodetect archive type</span>
+                    <span class="java-keyword">new</span> <a href="javadoc/net/sf/sevenzipjbinding/impl/RandomAccessFileInStream.html">RandomAccessFileInStream</a>(randomAccessFile));
+
+            System.<span class="java-staticfield">out</span>.println(<span class="java-string">"Count of items in archive: "</span> 
+                    + inArchive.getNumberOfItems());
+
+        } <span class="java-keyword">catch</span> (Exception e) {
+            System.<span class="java-staticfield">err</span>.println(<span class="java-string">"Error occurs: "</span> + e);
+            System.<span class="java-staticmethod">exit</span>(1);
+        } <span class="java-keyword">finally</span> {
+            <span class="java-keyword">if</span> (inArchive != <span class="java-keyword">null</span>) {
+                <span class="java-keyword">try</span> {
+                    inArchive.close();
+                } <span class="java-keyword">catch</span> (<a href="javadoc/net/sf/sevenzipjbinding/SevenZipException.html">SevenZipException</a> e) {
+                    System.<span class="java-staticfield">err</span>.println(<span class="java-string">"Error closing archive: "</span> + e);
+                }
+            }
+            <span class="java-keyword">if</span> (randomAccessFile != <span class="java-keyword">null</span>) {
+                <span class="java-keyword">try</span> {
+                    randomAccessFile.close();
+                } <span class="java-keyword">catch</span> (IOException e) {
+                    System.<span class="java-staticfield">err</span>.println(<span class="java-string">"Error closing file: "</span> + e);
+                }
+            }
+        }
+    }
+}
+
+</pre></div>
+<div class="snippet-info"><a href="snippets/PrintCountOfItems.java">download java code</a></div>
+</p>
+<p>
+If you run this program with
+</p>
+<div class="fragment"><pre class="fragment">
+C:\Test&gt; java -cp &lsaquo;path-to-lib&rsaquo;\sevenzip-jbinding.jar; 
+  &lsaquo;path-to-lib&rsaquo;\sevenzipjbinding-Windows-x86.jar;.
+  PrintCountOfItems my-test-archive.zip
+</pre></div>
+<p>
+you should get something like this:
+</p>
+<div class="fragment"><pre class="fragment">
+Count of items in archive: 4
+</pre></div>
+<br/>
+<p>
+Continue with <a href="basic_snippets.html">Code snippets</a> to get more examples.
+</p>
+</td></tr>
+</table></td></tr>
+</table>
+</center>
+</body>
+</html>
